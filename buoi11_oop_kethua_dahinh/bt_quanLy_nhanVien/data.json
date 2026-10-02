@@ -1,0 +1,16 @@
+[
+    {
+        "maNhanVien": 1,
+        "tenNhanVien": "Nguy?n Van A",
+        "luongCoBan": 5000000,
+        "soGioLam": 8,
+        "loaiNhanVien": 3
+    },
+    {
+        "maNhanVien": 2,
+        "tenNhanVien": "Ho\u00E0ng Ng?c B",
+        "luongCoBan": 10000000,
+        "soGioLam": 4,
+        "loaiNhanVien": 1
+    }
+]
