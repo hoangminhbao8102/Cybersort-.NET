@@ -1,0 +1,22 @@
+[
+  {
+    "LoaiDon": "Thuong",
+    "DonHang": {
+      "maDonHang": 1,
+      "tenKhach": "B?o",
+      "diaChi": "12 Ph\u00F9 D?ng Thi\u00EAn Vuong",
+      "tienHang": 350,
+      "soKM": 15
+    }
+  },
+  {
+    "LoaiDon": "GiaoNhanh",
+    "DonHang": {
+      "maDonHang": 2,
+      "tenKhach": "Khang",
+      "diaChi": "255 B\u00F9i Th? Xu\u00E2n",
+      "tienHang": 245,
+      "soKM": 50
+    }
+  }
+]
