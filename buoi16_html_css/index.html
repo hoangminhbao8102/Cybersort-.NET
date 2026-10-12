@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersoft Coffee</title>
+    <link rel="icon" href="https://cdnv2-tmdt.tgdd.vn/webmwg/production-fe/tmdt-tgdd/public/static/icons/favicon.ico" sizes="48x48" type="image/x-icon">
+</head>
+<body style="margin-bottom: 500px;">
+    <!-- 
+        h1 -> h6 : Hiển thị văn bản tiêu đề 
+        h càng nhỏ thì chữ càng lớn
+        Văn bản sẽ cần xử lý gì?
+        + Màu sắc, kích thước, độ đậm nhạt của chữ
+        <tagName attribute="value">Content</tagName>
+        attribute: thuộc tính trên thẻ
+            + style: dùng dể tinh chỉnh giao diện của các thẻ
+                - font-size: kích thước chữ đơn vị là px (hoặc em, rem) (mặc định là 16px đối với văn bản thường và đối với các thẻ h sẽ có pixel cố định)
+                - font-weight: độ đậm nhạt của chữ (100 -> 900) | bold là đậm nhất và light là nhạt nhất
+                - color: màu chữ (#RRGGBB) | rgb (255, 255, 255) | tên màu (red, blue, green)
+                - background-color: màu nền của chữ (#RRGGBB) | rgb (255, 255, 255) | tên màu (red, blue, green)
+                - text-align: căn chỉnh chữ (left, center, right)
+    -->
+    <!-- HEADER -->
+    <div id="header">
+        <h1 style="color: #1b73e8; font-weight: 100; text-align: center; background-color: navy;">Cybersoft Coffee</h1>
+        <!--
+            Nhóm thẻ trong html
+            + block: thẻ hiển thị trên 1 dòng riêng biệt và có độ rộng full trang (h1 -> h6, p, div, ul, ol, li, table, tr, td)
+            + inline: thẻ hiển thị trên cùng 1 dòng và có độ rộng bằng với nội dung của nó (span, a, img, strong, em)
+            + inline-block: thẻ hiển thị trên cùng 1 dòng nhưng có thể chỉnh sửa kích thước và vừa có thể chỉnh được độ rộng mặc định bằng nội dung của nó (input, button)
+        -->
+        <!-- 
+            2 thẻ tiêu biểu cho nhóm thẻ inline
+            a: thẻ liên kết
+                + href: thuộc tính dùng để xác định đường dẫn liên kết
+                + target: thuộc tính dùng để xác định cách mở liên kết
+                    - _blank: mở liên kết trong tab mới -> mở ra tab kế bên
+                    - _self: mở liên kết trong tab hiện tại (mặc định) -> mở tại trng hiện tại
+            span: thẻ dùng để nhóm các thẻ inline lại với nhau
+            label: thẻ dùng để nhóm các thẻ inline lại với nhau và có thể click vào label để focus vào input (dùng thuộc tính for="id của input")
+            span hoặc label danh cho nhãn không liên kết đến trang khác, a dùng cho nhãn có liên kết đến trang khác
+
+            Liên kết (Đường dẫn thư mục)
+            /: từ thư mục gốc dự án (domain)
+            ./: từ mục chứa file đó
+            ../: từ file đó ra 1 cấp thư mục
+        -->
+        <div style="text-align: center;">
+            <a>Home</a>
+            <a href="https://www.highlandscoffee.com.vn/vn/san-pham.html" target="_blank">Menu</a>
+            <a href="/pages/Order.html" target="_blank">Order</a>
+            <a href="/pages/Contact.html" target="_blank">Contact</a>
+        </div>
+    </div>
+
+    <!--
+        hr (block) = thẻ khuyết động: thẻ đường kẻ
+            + size: độ dày của thẻ (có thể chỉnh style height)
+            + color: màu của độ dày đó (hoặc chỉnh bẳng background)
+        Đơn vị:
+            px: pixel điểm ảnh
+            %: tính theo thẻ cha
+            <tag_parent>
+                <tag_child>
+    -->
+    <div id="about">
+        <hr size="5" color="red" width="75%">
+        <hr style="background-color: red; height: 10px; width: 75%;">
+        <h2 style="color: rgb(161, 96, 16); text-align: center;">About our coffee</h2>
+        <!-- p (block): thẻ đoạn văn bản-->
+        <p style="font-size: 16px; font-weight: normal; color: black; text-align: right;">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br/>
+            Adipisci quae modi omnis dolores nostrum natus excepturi!<br/>
+            Hic dolor ratione quo voluptatum at incidunt nobis ipsa <b>delectus, <i>quisquam</i>, earum magnam facere</b>.<br/>
+            <span style="font-weight: bold;font-style: italic;">Italian</span>
+        </p>
+    </div>
+        <div id="item">
+        <hr style="background-color: red; height: 10px; width: 75%;">
+        <h2 style="color: rgb(161, 96, 16); text-align: center;">Special Items</h2>
+
+        <label style="font-size: 30px; font-weight: bold; color: red;">The coffee label 1</label> <br/><br/>
+
+        <!--
+            <ul> (block): thẻ danh mục không có thứ tự
+            <ol>: thẻ danh mục có thứ tự
+                <li>: thẻ nội dung của đề mục
+            style:
+                list-style: chỉnh kiểu của list item
+        -->
+        <ul style="list-style: circle;">
+            <li>Green coffee</li>
+            <li>Pink coffee</li>
+            <li>Black coffee</li>
+        </ul>
+
+        <ol>
+            <li>Green coffee</li>
+            <li>Pink coffee</li>
+            <li>Black coffee</li>
+        </ol>
+
+        <!-- 
+            img: inline block - không chiếm full dòng nhưng chỉnh được độ rộng
+            src: đường dẫn đến file ảnh (.png, .jpg, .jpeg, .gif, ...)
+            width: độ rộng
+            height : chiểu cao
+            chỉ chỉnh 1 trong 2 không sẽ bị scale ảnh làm xấu hình ảnh
+        -->
+        <img src="/img/chilling-cafe-01.jpg" height="300px">
+        <img src="/img/chilling-cafe-11.jpg" height="300px">
+        <img src="/img/chilling-cafe-12.jpg" width="500px" height="300px" style="object-fit: cover;">
+
+        <hr width="50%">
+        <h1 style="text-align: center;">Menu</h1>
+    </div>
+
+    <div id="menu">
+        <!-- 
+            Thẻ table (block)
+            <table>
+                + Thuộc tính table
+                    - border: viền thẻ
+                    - width: độ rộng
+                    - align: canh lề
+                    - cellpadding: khoảng cách nội dung của các ô ra đường viền
+                    - cellspacing: khoảng cách giữa các ô
+                + <tr>: Thẻ dòng
+                    - th : thẻ cell tiêu đề -> in đậm nội dung
+                    - td : thẻ dell data => nội dung normal
+                        + align: canh lề trái phải giữa: left | right | center
+                        + v-alien: canh lề trên phải dưới: top | right | bottom
+                    + Chiếm dòng thì xóa td dưới
+                    + Chiếm cột thì xóa td kế bên
+
+                    + background image ->
+                        background-image: ảnh nền
+                        background-size: kích thước - trãi ảnh
+                        background-position: vị trí trãi ảnh
+            -> 8 dòng và 4 cột
+        -->
+        <table style="width: 100px;" border="1" align="center" cellpadding="15px" cellspacing="0px">
+            <tr style="height: 50px;">
+                <th style="background-color: gray;" align="right" valign="top" colspan="2">Name</th>
+                <th>Type</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td rowspan="4" style="background: url(/img/chilling-cafe-01.jpg); background-size: cover; background-position: bottom left; color: white;">Coffee</td>
+                <td rowspan="2">2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td rowspan="2">2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td rowspan="3">1</td>
+                <td>2</td>
+                <td rowspan="3">3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td rowspan="2">4</td>
+            </tr>
+            <tr>
+                <td>4</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="footer">
+        <p style="text-align: center;">
+            Reach us via <a href="mailto:minhbao8102@gmail.com"> Email: minhbao8102@gmail.com </a> of Holine: <a href="tel: 0793 893 778">0793 893 778</a> . Thank you.
+        </p>
+    </div>
+    <a href="#header">Header</a>
+    <a href="#about">About</a>
+</body>
+</html>
