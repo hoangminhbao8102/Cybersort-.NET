@@ -1,0 +1,16 @@
+.flex-container {
+    background-color: orange;
+    display: flex;
+    flex-direction: row; /* chọn theo hàng */
+
+    height: 800px;
+    width: 1000px;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.item {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+}

@@ -1,0 +1,416 @@
+/*
+    Cách bước thiết kế web
+    1. Chia section từng phần
+    2. Những các thư viện liên quan (css, fonts, image, logo, ...)
+
+    Các bước thiết kế web (đi vào từng phần)
+    1. Dàn html nội dung
+    2. Chia bố cục
+        + Css chia bố cục (flex, grid)
+    3. css màu sắc, kích thước, in đậm, bg, bd, ... khoảng cách ...
+    4. hiệu ứng
+
+    selector *: tất cả các thẻ
+    * các thuộc tính khảng cách css
+    spacing:
+        + margin: khảng cách từ viền phần tử này sang viền phần tử khác
+        + padding: khảng cách nội dung phần tử ra dến iền phần tử
+
+    margin: top right bottom left;
+    margin: top_bottom right_left;
+    margin-(hướng): giá trị;
+
+    padding: top right bottom left;
+    padding: top_bottom right_left;
+    padding-(hướng): giá trị;
+*/
+
+:root {
+    --text-secondary-color: #000;
+    --text-primary-color: red;
+    --text-gray: rgb(190, 190, 190);
+    --bg-dark: rgb(32, 32, 32);
+}
+
+* {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header {
+    background-color: white;
+}
+
+.header .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* background-color: red; */
+    align-items: center;
+    height: 80px;
+    border-bottom: 1px solid #ddd; /* Thêm đường kẻ ở dưới header*/
+    max-width: 75%;
+    margin: 0px auto;
+}
+
+.header .hotline .sub-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-secondary-color);
+}
+
+.header .call-us {
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--text-gray);
+}
+
+.header .phone {
+    color: var(--text-primary-color);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.header .menu-header {
+    display: flex;
+}
+
+.header .menu-header a {
+    margin: 0px 15px;
+    font-size: 16px;
+    color: var(--text-secondary-color);
+    font-weight: normal;
+    text-decoration: none; /* Ẩn viền decoration */
+    padding: 10px;
+    padding-right: 20px;
+    border-right: 1px solid #000;
+    transition: all 0.3s; /* chuyển đổi từ thường sang hover thuộc color mất 0.3s */
+}
+
+.header .menu-header a:hover {
+    color: var(--text-primary-color);
+    transition: color 1s; /* chuyển đổi từ thường sang hover thuộc color mất 1s */
+}
+
+.header .menu-header a:last-child {
+    border: none;
+}
+
+/* cart */
+.cart .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+}
+
+.cart .brand-name {
+    font-weight: bold;
+    font-size: 30px;
+    text-transform: uppercase; /* Chỉnh chữ hoa thường */
+}
+
+.cart .brand-name .h {
+    background-color: var(--text-primary-color);
+    padding: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.cart .cart-info b {
+    color: red;
+    font-size: 30px;
+}
+
+.cart .cart-info i {
+    color: red;
+    font-size: 30px;
+    margin-top: 30px;
+    display: inline-block;
+    transform: translateY(5px); /* Dịch chuyển phần tử theo trục tọa độ */
+    cursor: pointer;
+}
+
+/*
+    Canh giữa thẻ block
+    1. set width
+    2. margin trái phải auto
+    Giá trị phần trăm phụ thuộc vào thẻ cha
+*/
+.menu {
+    width: 80%;
+    margin: 0px auto;
+}
+
+.menu .container {
+    background-color: var(--bg-dark);
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.menu .menu-item {
+    height: 100%;
+}
+
+.menu .menu-item a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    display: inline-block;
+    height: 100%;
+    padding: 10px; /* Chình khoảng nội dung với viền thẻ */
+    line-height: 35px; /* Chỉnh chiều cao của dòng */
+    font-weight: 300;
+    position: relative;
+}
+
+.menu .menu-item a::after {
+    content: "";
+    display: inline-block;
+    height: 60px;
+    background-color: red;
+    width: 1px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transition: all 1s;
+}
+
+.menu .menu-item a::after:hover {
+    height: 0px;
+    transition: all 1s;
+}
+
+.menu .menu-item a:hover {
+    background-color: rgb(142, 8, 8);
+    transition: all 1s;
+}
+
+.menu .menu-item a:hover::after {
+    height: 60px;
+    transition: all 1s;
+}
+
+.menu .frm-search {
+    color: #fff;
+    position: relative;
+    padding: 15px;
+}
+
+.menu .frm-search input {
+    width: 300px;
+    height: 30px;
+}
+
+.menu .frm-search input::placeholder {
+    color: red;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.menu .frm-search i {
+    color: #000;
+    font-size: 20px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.carousel {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.carousel .container {
+    margin-top: 30px;
+    display: flex;
+}
+
+.carousel .menu-categories {
+    border: 1px solid gray;
+    width: 30%;
+}
+
+.carousel .menu-categories h1 {
+    padding: 15px 30px;
+    padding-left: 5px;
+    background-color: red;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.carousel .menu-categories .menu-item {
+    padding: 0px 15px;
+}
+
+.carousel .menu-categories .menu-item .ul-item, .carousel .menu-categories .menu-item .ul-child {
+    list-style: none;
+}
+
+.carousel .menu-categories .menu-item .ul-item .li-item {
+    margin: 15px auto;
+    cursor: pointer;
+}
+
+.carousel .menu-categories .menu-item .ul-child {
+    height: 0px;
+    opacity: 0;
+    transition: all 1s;
+}
+
+.carousel .menu-categories .menu-item .li-item:hover .ul-child {
+    height: 50px;
+    opacity: 1;
+    transition: all 1s;
+}
+
+.carousel .menu-categories .menu-item .li-child a {
+    text-decoration: none;
+    color: gray;
+}
+
+.carousel .menu-categories .menu-item .li-child a:hover {
+    color: red;
+    transition: all 1s;
+}
+
+.carousel .menu-categories .menu-item .li-child::before {
+    content: ">";
+    color: gray;
+    font-size: 16px;
+}
+
+.carousel .poster {
+    border: 1px solid gray;
+    display: flex;
+    margin-left: 15px;
+    padding: 15px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel .poster img {
+    height: 200px;
+}
+
+.carousel .poster h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+}
+
+.carousel .poster h2 {
+    font-size: 50px;
+    font-weight: bold;
+    color: red;
+}
+.carousel .poster h3 {
+    color: gray;
+}
+
+.carousel .poster p {
+    padding: 15px 0px;
+}
+
+.carousel .poster .btn-shop {
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: 0px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    background-color: red;
+}
+
+.carousel .poster .btn-shop:hover {
+    background-color: rgb(92, 13, 13);
+    transition: all 1s;
+}
+
+/* product */
+
+.product .container {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.product .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 15px;
+}
+
+.product .d-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product .d-flex .flex-item {
+    width: calc(100 / 4);
+}
+
+.product .d-flex .flex-item .card {
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
+.product .d-flex .flex-item .card hr {
+    color: red;
+    background-color: red;
+    height: 3px;
+}
+
+.product .d-flex .flex-item .card img {
+    width: 100%;
+}
+
+.product .d-flex .flex-item .card .price-button {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.product .d-grid {
+    display: grid;
+    grid-column: 1fr 1fr 1fr 1fr;
+}
+
+.product .d-grid .grid-item .card {
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
+.product .d-grid .grid-item .card hr {
+    color: red;
+    background-color: red;
+    height: 3px;
+}
+
+.product .d-grid .grid-item .card img {
+    width: 100%;
+}
+
+.product .d-grid .grid-item .card .price-button {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}

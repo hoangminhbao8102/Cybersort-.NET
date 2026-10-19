@@ -1,0 +1,67 @@
+/*
+    Selector
+    Điểm càng cao thì css càng ưu tiên
+    #id: 100 điểm với điều kiện không đặt trùng nhau - Không nên dùng id để css
+    .className: 10 điểm
+    [attr]: 10 điểm
+    tagName: 1 điểm
+    Nếu như cùng điểm số thì ưu tiên css đứng sau
+
+    font-size, font-weight, color, background: Nếu thẻ con không chình thì sẽ kế thừa từ thẻ cha
+*/
+
+
+
+h1 {
+    color: red;
+}
+
+/*
+#title {
+    color: pink
+}
+*/
+
+.text-title {
+    color: blue;
+}
+
+[data-title] {
+    color: green;
+}
+
+.txt-css-title {
+    color: blueviolet;
+}
+
+.menu {
+    color: red;
+}
+
+.content .menu-1 { /* 10 điểm + 10 điểm */
+    font-size: 25px;
+}
+
+.content .menu li:nth-child { /* 21 điểm */
+    background-color: purple;
+}
+
+.content .menu li:first-child { /* 21 điểm */
+    background-color: aquamarine;
+}
+
+.article > h1 {
+    color: blue;
+    font-size: 20px;
+    font-style: italic; /* in nghiêng */
+}
+
+.p-text::before {
+    content: "\f004";
+    font-family: "Font Awesome 7 Free";
+}
+
+.p-text::after {
+    content: "\f005";
+    font-family: "Font Awesome 7 Free";
+}
