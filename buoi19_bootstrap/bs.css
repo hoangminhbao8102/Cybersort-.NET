@@ -1,0 +1,83 @@
+/*
+    Hệ màu trong bs:
+        + primary: màu xanh dương 
+        + accent: màu tím
+        + success: màu xanh lá cây
+        + danger: màu đỏ
+        + warning: màu vàng
+        + info: màu xanh đậm
+        + secondary: xám
+        + dark - black: đen
+        + light - white: trắng
+    Hệ khoảng cách: spacing 0 -> 5
+        + padding: p-[khoảng cách] | pt pb ps pe py: trên dưới px: trái phải
+        + margin: m-[khoảng cách] | mt mb ms me, my: trên dưới, mx: trái phải
+    Rem là gì?
+    font-size của html làm gốc (mặc định là 16px)
+    1 rem = 16px (default)
+    sizing: Kích thước
+    Hệ phần trăm: 0 -> 5
+        0 : 0%
+        25: 25%
+        ...
+        100 : !00%
+    w: rộng
+    h: cao
+    display: d-[value]
+    Hệ hướng:
+        + t hoặc top: trên
+        + s hoặc start: trái
+        + e hoặc end: phải
+        + b hoặc bottom: dưới
+        + y: trên dưới
+        + x: trái phải
+    text-[hệ hướng] start | end | center
+    opacity - [hệ phần trăm]
+
+    border: viền
+        + border: 4 hướng
+        + border-[hướng]: bật lên border 1 hướng
+        + border-[hệ màu]: màu viền
+        + border-[hệ 0 -> 5]: dộ dày của viền
+        + bo góc
+            - rounder: bo 4 góc nhẹ
+            - pill: bo góc nặng
+            - circle: hình tròn (lưu ý: width = height)
+    
+    Hệ màn hình:
+        + sm: mobile
+        + md: tablet
+        + lg: laptop - desktop 13 inch
+        + xl: desktop
+        + xxl: màn 2k và 4k
+*/
+
+html {
+    font-size: 16px;
+}
+
+.txt-demo {
+    font-size: 2rem;
+}
+
+.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+
+.demo-shadow {
+    box-shadow: -71px 100px 20px 14px rgba(74, 8 , 8 ,0.5);
+}
+
+.bg-image {
+    width: 500px;
+    height: 300px;
+    background-image: url(https://picsum.photos/300/300);
+    background-position: center;
+    background-size: cover;
+}

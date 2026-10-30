@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap component</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!--
+        bs component có 2 dạng
+        + Dạng 1: component tĩnh không có tương tác người dùng
+        + Dạng 2: component có tương tác người dùng ví dụ người click vào hoặc hover vào giao diện sẽ thay đổi (JS) -> Qui tắc atribute (data-target, data-toggle, ...)
+
+        Hiệu ứng:
+        + data-bs-[toggle, ...] =  hiệu ứng
+
+    -->
+</head>
+<body>
+    <div class="container">
+        <h3>Bootstrap component</h3>
+        <h3>Accordion</h3>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item"></div>
+        </div>
+        <hr>
+        <h3>Alert</h3>
+        <p class="bg-primary-subtle text-primary p-3 rounded">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate est doloribus ab, aspernatur aut voluptatum libero debitis commodi illo ad voluptatem, enim, dolorem eos? Sequi ducimus explicabo eaque nihil dolore?</p>
+        <p class="alert alert-primary fs-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At ad possimus nobis nostrum sit. Consequatur, suscipit! Commodi deserunt enim ipsa nisi deleniti, odio sed reiciendis quae earum! Laboriosam, soluta ut?</p>
+        <p>
+            <button
+                class="btn btn-primary"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#contentId"
+                aria-expanded="false"
+                aria-controls="contentId"
+            >
+                Show
+            </button>
+        </p>
+        <div class="collapse" id="contentId"></div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

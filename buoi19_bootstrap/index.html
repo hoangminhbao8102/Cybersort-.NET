@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <link rel="stylesheet" href="bs.css">
+</head>
+<body>
+    <!-- Bootstrap -->
+    <div class="container" style="margin-bottom: 500px;">
+        <!-- 
+            Background: bg-[hệ màu]
+            Color: {bs5} text-[hệ màu] {bs6} fg-[hệ màu]
+        -->
+        <div class="bg-success fg-white p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias minus nemo cumque odit. Saepe deleniti, totam, laborum soluta repellendus eveniet aut vel iure dolor non magni corporis in unde odit!</div>
+        <div class="bg-danger fg-white p-5 my-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias minus nemo cumque odit. Saepe deleniti, totam, laborum soluta repellendus eveniet aut vel iure dolor non magni corporis in unde odit!</div>
+        <div class="txt-demo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo ratione assumenda perspiciatis ab, quod aperiam possimus voluptatem eos quis vitae enim doloremque libero, voluptatibus veritatis tenetur ea quisquam exercitationem qui?</div>
+        <h3>Sizing - display</h3>
+        <div class="parent d-flex flex-column bg-warning justify-content-between align-items-center" style="height: 500px;">
+            <div class="item w-25 bg-danger text-white">1</div>
+            <div class="item w-25 bg-primary text-white">1</div>
+            <div class="item w-25 bg-success text-white">1</div>
+            <div class="item w-25 bg-secondary text-white">1</div>
+        </div>
+        <div class="d-grid grid-cols-3">
+            <div class="item-1 bg-black">1</div> 
+            <div class="item-1 bg-primary">1</div> 
+            <div class="item-1 bg-danger">1</div> 
+        </div>
+        <br>
+        <br>
+        <label class="bg-success d-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, deleniti repellendus! Distinctio eligendi ea quo omnis corporis, ab provident reiciendis voluptate sit soluta. Optio dolorum velit debitis minus porro necessitatibus.</label>
+        <div class="bg-primary d-inline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti consequuntur amet iusto itaque accusamus recusandae eius, veniam quisquam soluta ducimus. Non consectetur, at distinctio perferendis quis deserunt corporis iusto doloremque.</div>
+
+        <h3>Letter</h3>
+        <div class="text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ut fugit esse asperiores omnis? Possimus rem necessitatibus non, fugiat ipsum quaerat aliquid eaque omnis? Dolorem, sit adipisci? Omnis, eius molestiae?</div>
+        <h1>Border</h1>
+        <div class="bg-black fg-white p-3 border border-danger border-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum repellat aut exercitationem quisquam illum atque odit voluptas omnis quos animi doloribus, rerum vero eveniet praesentium perferendis! Beatae, dicta eos.</div>
+        <div class="rounded border border-1 border-danger p-5 my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum et illum quia modi maxime iusto amet hic, beatae quae fuga veritatis tenetur repellendus ipsam facere, ad eligendi debitis est corporis?</div>
+        <div class="rounded-pill border border-1 border-danger p-5 my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, nihil aspernatur. Ducimus atque laudantium, dolorem nam enim cum earum ratione voluptates eveniet, repellendus aspernatur nihil iusto aliquam expedita praesentium dolor.</div>
+        <div class="rounded-circle bg-danger" style="width: 50px; height: 50px;"></div>
+        <h1>Position</h1>
+        <div class="position-relative bg-warning" style="height: 300px;">
+            <div class="item bg-danger position-absolute start-100 top-0 translate-middle" style="width: 50px; height: 50px;">item</div>
+        </div>
+        <h1>Shadow</h1>
+        <div class="demo-shadow d-inline-block">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem vitae exercitationem nobis optio, ad iusto cupiditate distinctio blanditiis voluptatem officiis tenetur dicta ipsa, beatae eos, libero dolore voluptas sint harum.</div>
+        <div class="shadow-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ex unde architecto, perferendis enim minus repellendus fugit pariatur fugiat placeat molestiae quod esse soluta maxime reiciendis explicabo. Quas, libero tenetur!</div>
+        <h3>Background - image</h3>
+        <div class="bg-image"></div>
+        <br>
+        <img src="https://picsum.potos/300/300" width="300" height="300" style="object-fit: cover; object-position: center;">
+
+        <hr>
+        <h3>Bootstrap lưới 12 column</h3>
+        <div class="row">
+            <div class="col bg-warning">1</div>
+            <div class="col bg-danger">1</div>
+            <div class="col bg-success">1</div>
+            <div class="col bg-primary">1</div>
+            <div class="col bg-warning">1</div>
+            <div class="col bg-danger">1</div>
+            <div class="col bg-success">1</div>
+            <div class="col bg-primary">1</div>
+        </div>
+        <!--
+            Lưới 12 col + màn hình
+            col-[màn hình]-[đơn vị]
+            Tổng 1 dòng = 12
+        -->
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-12 bg-warning">1</div>
+            <div class="col-md-3 col-sm-6 col-12 bg-danger">1</div>
+            <div class="col-md-3 col-sm-6 col-12 bg-success">1</div>
+            <div class="col-md-3 col-sm-6 col-12 bg-primary">1</div>
+            <div class="col-md-3 col-sm-6 col-12 bg-warning">1</div>
+            <div class="col-md-3 col-sm-6 col-12 bg-danger">1</div>
+            <div class="col-md-3 col-sm-6 col-12 bg-success">1</div>
+            <div class="col-md-3 col-sm-6 col-12 bg-primary">1</div>
+        </div>
+
+        <div class="row align-tiems-center" style="height: 300px;">
+            <div class="col-md-6 bg-danger h-100">Đồng hồ</div>
+            <div class="col-md-6 bg-sucess h-100">
+                <div class="row h-50">
+                    <div class="col-md-6 bg-warning">Gương</div>
+                    <div class="col-md-6 bg-primary">Cây</div>
+                </div>
+                <div class="row h-50">
+                    <div class="col-md-6 bg-dark">Điện thoại</div>
+                    <div class="col-md-6 bg-success">Bóng đèn</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row bg-danger mt-2">
+            <div class="col">1</div>
+            <div class="col">1</div>
+            <div class="col">1</div>
+            <div class="col">1</div>
+            <div class="col">1</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 bg-danger">1</div>
+            <div class="col-md-4 offset-md-4 bg-primary">1</div>
+        </div>
+    </div>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 5 input tag</title>
+</head>
+<body>
+    <div class="cantainer">
+        <h1>HTML 5 input tag</h1>
+        <!--
+            form: là thẻ html dùng để bao bọc các hẻ input để lây thông tin từ các thẻ input
+            action: chứa đường dẫn file xử lý thông tin
+            method: giao thức gửi
+                + post: dữ liệu gửi đi bảo mật (dành cho form đăng ký, đăng nhập, ...)
+                + get: dữ liệu gửi đi thông url (thường dành cho form search) 4096 kí tự
+            label for = "input-id" => focus vào input tương ứng
+            input:
+                default type = "text": ô điền văn bản gửi đi
+                type = "password": ô điền văn bản bảo mật không copy được
+                type = "radio":
+                    - Chọn 1 trong nhiều lựa chọn
+                    - Name giống nhau khác nhau về value
+                type = "checkbox" tương tự radio nhưng"
+                    - Chọn nhiều lựa chọn
+                    - name phải giống nhau
+                tyoe = "number": Chỉ được nhập số
+
+        -->
+        <form action="/handle.html" method="get">
+            <label for="">Tài khoản</label>
+            <input required type="text" name="taiKhoan" id="taiKhoan">
+            <br>
+            <br>
+            <label for="password">Mật khẩu</label>
+            <input pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,32}" minlength="6" maxlength="32" type="password" name="password" id="password">
+            <br>
+            <br>
+            <label for="dob">DOB</label>
+            <input type="date" name="dob" id="dob">
+            <br>
+            <br>
+            <label for="color">Màu</label>
+            <input type="color" name="color" id="color">
+            <br>
+            <br>
+            <label>Giới tính</label>
+            <input type="radio" name="gioiTinh" id="nam" value="nam" checked>
+            <label for="nam">Nam</label>
+            <input type="radio" name="gioiTinh" id="nu" value="nu">
+            <label for="nu">Nữ</label>
+            <input type="radio" name="gioiTinh" id="khac" value="khac">
+            <label for="khac">Khác</label>
+            <br>
+            <br>
+            <label>Sở thích</label>
+            <input type="checkbox" name="soThich" id="docSach" value="docSach" checked>
+            <label for="docSach">Đọc sách</label>
+            <input type="checkbox" name="soThich" id="xemPhim" value="xemPhim">
+            <label for="xemPhim">Xem phim</label>
+            <input type="checkbox" name="soThich" id="lapTrinh" value="lapTrinh">
+            <label for="lapTrinh">Lập trình</label>
+            <br>
+            <br>
+            <label for="postcode">Postcode</label>
+            <input type="number" name="postcode" id="postcode" min="1" max="100">
+            <br>
+            <br>
+            <label for="khoang">Khoảng</label>
+            <input type="range" name="khoang" id="khoang" min="1" max="100">
+            <br>
+            <br>
+            <label for="moTa">Mô tả</label>
+            <textarea name="moTa" id="moTa" rows="5" cols="50"></textarea>
+            <br>
+            <br>
+            <label for="quocGia">Quốc Gia</label>
+            <select name="quocGia" id="quocGia">
+                <option value="VIE">Việt Nam</option>
+                <option value="CHN">Trung Quốc</option>
+                <option value="USA">Mỹ</option>
+                <option value="ENG">Anh</option>
+            </select>
+            <br>
+            <br>
+            <label for="quocGia">Quốc Tịch</label>
+            <select name="quocGia" id="quocGia" multiple>
+                <option value="VIE">Việt Nam</option>
+                <option value="CHN">Trung Quốc</option>
+                <option value="USA">Mỹ</option>
+                <option value="ENG">Anh</option>
+            </select>
+            <br>
+            <br>
+            <button type="submit">Submit</button>
+            <button type="button">Btn - Định nghĩa JS</button>
+            <button type="reset">Reset</button>
+        </form>
+    </div>
+    <hr>
+    <h1>HTML output tag</h1>
+    <video width="1000" height="720" poster="https://i.pravatar.cc/300" controls>
+        <source src="/handle.html">
+    </video>
+    <audio controls>
+        <source src="/handle.html">
+    </audio>
+    <!-- iFrame nhúng 1 web khác vào web mình -->
+    <iframe src="https://cybersoft.edu.vn" width="1000px" height="1000px"></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/lvBKQ-RKUJU?si=C8mXFe5YKg642o6K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d18519.91374507939!2d108.43947425!3d11.9600238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1svi!2s!4v1792416534875!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M240 363.3L240 576L356 576L356 363.3L442.5 363.3L460.5 265.5L356 265.5L356 230.9C356 179.2 376.3 159.4 428.7 159.4C445 159.4 458.1 159.8 465.7 160.6L465.7 71.9C451.4 68 416.4 64 396.2 64C289.3 64 240 114.5 240 223.4L240 265.5L174 265.5L174 363.3L240 363.3z"/></svg>
+</body>
+</html>
