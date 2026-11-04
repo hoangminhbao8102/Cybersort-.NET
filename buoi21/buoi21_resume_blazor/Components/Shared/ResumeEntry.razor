@@ -1,0 +1,15 @@
+<article class="resume-entry d-flex flex-column flex-md-row justify-content-between mb-5 gap-3">
+    <div class="flex-grow-1">
+        <h3 class="mb-0">@Title</h3>
+        <div class="subheading mb-3">@Subtitle</div>
+        @ChildContent
+    </div>
+    <div class="flex-shrink-0"><span class="text-primary">@Period</span></div>
+</article>
+
+@code {
+    [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
+    [Parameter] public string Subtitle { get; set; } = string.Empty;
+    [Parameter] public string Period { get; set; } = string.Empty;
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

@@ -1,0 +1,16 @@
+<section class="resume-section" id="@Id" aria-label="@(Label ?? Id)">
+    <div class="resume-section-content">
+        @if (!string.IsNullOrWhiteSpace(Title))
+        {
+            <h2 class="mb-5">@Title</h2>
+        }
+        @ChildContent
+    </div>
+</section>
+
+@code {
+    [Parameter, EditorRequired] public string Id { get; set; } = string.Empty;
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public string? Label { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

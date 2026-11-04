@@ -1,0 +1,42 @@
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav" aria-label="Main navigation">
+    <a class="navbar-brand" href="about" @onclick="CloseMenu">
+        <span class="d-block d-lg-none">Clarence Taylor</span>
+        <span class="d-none d-lg-block">
+            <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg"
+                 alt="Clarence Taylor profile portrait" width="160" height="160" />
+        </span>
+    </a>
+    <button class="navbar-toggler" type="button" @onclick="ToggleMenu" aria-controls="navbarResponsive"
+            aria-expanded="@menuOpen.ToString().ToLowerInvariant()" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse @(menuOpen ? "show" : "")" id="navbarResponsive">
+        <ul class="navbar-nav" @onclick="CloseMenu">
+            <li class="nav-item">
+                <NavLink class="nav-link" href="about" Match="NavLinkMatch.All">About</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="experience" Match="NavLinkMatch.All">Experience</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="education" Match="NavLinkMatch.All">Education</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="skills" Match="NavLinkMatch.All">Skills</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="interests" Match="NavLinkMatch.All">Interests</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="award" Match="NavLinkMatch.All">Awards</NavLink>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+@code {
+    private bool menuOpen;
+    private void ToggleMenu() => menuOpen = !menuOpen;
+    private void CloseMenu() => menuOpen = false;
+}

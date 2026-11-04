@@ -1,0 +1,16 @@
+/* The bundled styles.css includes Bootstrap 5.2.3 and the reference theme. */
+html { scroll-behavior: auto !important; }
+.resume-entry:last-child { margin-bottom: 0 !important; }
+.resume-entry .flex-grow-1 { min-width: 0; }
+.resume-entry .flex-shrink-0 { padding-left: 1rem; }
+.img-profile { object-fit: cover; }
+h1:focus, h2:focus { outline: none; }
+a:focus-visible, button:focus-visible { outline: 3px solid #212529; outline-offset: 4px; }
+#sideNav a:focus-visible, #sideNav button:focus-visible { outline-color: #fff; }
+.skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 1100; background: #fff; padding: .5rem 1rem; color: #343a40; }
+.skip-link:focus { top: 1rem; }
+#main-content { overflow-wrap: break-word; }
+#blazor-error-ui { display: none; background: #fff3cd; color: #664d03; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1200; padding: .75rem 1.25rem; box-shadow: 0 -1px 3px #0003; }
+#blazor-error-ui .dismiss { position: absolute; right: 1rem; background: none; border: 0; }
+@media (max-width: 767.98px) { .resume-entry .flex-shrink-0 { padding-left: 0; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
