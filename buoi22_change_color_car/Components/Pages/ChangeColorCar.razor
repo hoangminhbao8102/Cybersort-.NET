@@ -1,0 +1,50 @@
+@page "/change-color-car"
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.Components
+
+<PageTitle>Change color car</PageTitle>
+
+<main class="car-demo">
+    <h1>Change color car</h1>
+
+    <div class="content">
+        <div class="car-preview">
+            <img src="@CurrentImage" alt="@($"{SelectedColor} car")" />
+        </div>
+
+        <div class="color-options" aria-label="Choose car color">
+            <button type="button" class="btn btn-danger @(SelectedColor == "red" ? "selected" : "")"
+                    aria-pressed="@(SelectedColor == "red")" @onclick="SelectRed">
+                Red color
+            </button>
+
+            <button type="button" class="btn btn-secondary @(SelectedColor == "silver" ? "selected" : "")"
+                    aria-pressed="@(SelectedColor == "silver")" @onclick="SelectSilver">
+                Silver color
+            </button>
+
+            <button type="button" class="btn btn-dark @(SelectedColor == "black" ? "selected" : "")"
+                    aria-pressed="@(SelectedColor == "black")" @onclick="SelectBlack">
+                Black color
+            </button>
+        </div>
+    </div>
+</main>
+
+@code {
+    // STATE: Biến trạng thái kiểu string lưu màu xe hiện tại.
+    private string SelectedColor { get; set; } = "black";
+
+    // DATABINDING: Đường dẫn ảnh được xác định từ state SelectedColor.
+    private string CurrentImage => SelectedColor switch
+    {
+        "red" => "/products/red-car.jpg",
+        "silver" => "/products/silver-car.jpg",
+        "black" => "/products/black-car.jpg",
+        _ => "/products/black-car.jpg"
+    };
+
+    private void SelectRed() => SelectedColor = "red";
+    private void SelectSilver() => SelectedColor = "silver";
+    private void SelectBlack() => SelectedColor = "black";
+}
