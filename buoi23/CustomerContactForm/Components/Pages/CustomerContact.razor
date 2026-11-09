@@ -1,0 +1,193 @@
+@page "/"
+@page "/customer-contact"
+@rendermode InteractiveServer
+
+<PageTitle>Customer Contact Form</PageTitle>
+
+<main class="contact-container">
+    <h1>Customer Contact Form</h1>
+
+    <EditForm Model="@customer" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+
+        <div class="form-group">
+            <label for="fullName">Full Name <span>*</span></label>
+            <InputText id="fullName" class="form-control" @bind-Value="customer.FullName"
+                       placeholder="Enter your full name" />
+            <ValidationMessage For="@(() => customer.FullName)" />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email <span>*</span></label>
+            <InputText id="email" class="form-control" @bind-Value="customer.Email"
+                       placeholder="Enter your email" />
+            <ValidationMessage For="@(() => customer.Email)" />
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number <span>*</span></label>
+            <InputText id="phone" class="form-control" @bind-Value="customer.PhoneNumber"
+                       placeholder="Enter your phone number" inputmode="numeric" />
+            <ValidationMessage For="@(() => customer.PhoneNumber)" />
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <InputText id="address" class="form-control" @bind-Value="customer.Address"
+                       placeholder="Enter your address" />
+            <ValidationMessage For="@(() => customer.Address)" />
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message <span>*</span></label>
+            <InputTextArea id="message" class="form-control message-box" @bind-Value="customer.Message"
+                           placeholder="Enter your message" />
+            <ValidationMessage For="@(() => customer.Message)" />
+        </div>
+
+        <div class="form-group">
+            <label for="service">Select Service <span>*</span></label>
+            <InputSelect id="service" class="form-control" @bind-Value="customer.Service">
+                <option value="">Choose...</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Mobile Development">Mobile Development</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+                <option value="Software Consulting">Software Consulting</option>
+                <option value="Other">Other</option>
+            </InputSelect>
+            <ValidationMessage For="@(() => customer.Service)" />
+        </div>
+
+        <div class="terms-group">
+            <InputCheckbox id="terms" @bind-Value="customer.AgreeToTerms" />
+            <label for="terms">I agree to the terms and conditions</label>
+            <span class="required-star">*</span>
+            <ValidationMessage For="@(() => customer.AgreeToTerms)" />
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </EditForm>
+
+    @if (isSubmitted)
+    {
+        <div class="success-message" role="status">
+            Your contact form has been submitted successfully!
+        </div>
+    }
+</main>
+
+<style>
+    .contact-container {
+    width: min(100% - 32px, 400px);
+    margin: 30px auto;
+    padding: 25px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .05);
+    font-family: Arial, sans-serif;
+}
+
+.contact-container h1 {
+    margin: 2px 0 25px;
+    color: #212529;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.form-group { margin-bottom: 13px; }
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #212529;
+    font-size: 13px;
+}
+
+.form-group label span, .required-star { color: #dc3545; }
+
+.form-control {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 35px;
+    padding: 7px;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    outline: none;
+    background-color: #fff;
+    color: #212529;
+    font-size: 12px;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, .15);
+}
+
+.message-box { height: 60px; resize: vertical; }
+
+::deep .validation-message {
+    display: block;
+    margin-top: 4px;
+    color: #dc3545;
+    font-size: 10px;
+}
+
+.terms-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    margin: 15px 0;
+    font-size: 11px;
+}
+
+.terms-group input { margin: 0; }
+.terms-group label { margin: 0; }
+::deep .terms-group .validation-message { flex-basis: 100%; }
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    height: 35px;
+    border: 0;
+    border-radius: 3px;
+    background: #087bfa;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.submit-btn:hover { background: #0069d9; }
+
+.success-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    background: #d4edda;
+    color: #155724;
+    font-size: 12px;
+}
+
+</style>
+
+@code {
+    private CustomerContactModel customer = new();
+    private bool isSubmitted;
+
+    private void HandleValidSubmit()
+    {
+        isSubmitted = true;
+        Console.WriteLine("Customer contact form submitted:");
+        Console.WriteLine($"Full Name: {customer.FullName}");
+        Console.WriteLine($"Email: {customer.Email}");
+        Console.WriteLine($"Phone Number: {customer.PhoneNumber}");
+        Console.WriteLine($"Address: {customer.Address}");
+        Console.WriteLine($"Message: {customer.Message}");
+        Console.WriteLine($"Service: {customer.Service}");
+        Console.WriteLine($"Agree To Terms: {customer.AgreeToTerms}");
+    }
+}
