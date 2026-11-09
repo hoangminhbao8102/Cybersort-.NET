@@ -1,32 +1,24 @@
-# ChangeColorCar - Blazor Data Binding
+# ChangeColorCar — Blazor Data Binding (.NET 10)
 
-## Yêu cầu
-- .NET 8 SDK
-- Visual Studio 2022 hoặc Visual Studio Code
+## Chạy ứng dụng
 
-## Chạy chương trình
-Mở terminal tại thư mục chứa `ChangeColorCar.csproj`, chạy:
+1. Mở thư mục chứa `buoi22_change_color_car.csproj` trong Visual Studio hoặc Terminal.
+2. Chạy `dotnet restore` và `dotnet run`.
+3. Truy cập `/change-color-car` trên cổng mà ứng dụng hiển thị.
 
-```bash
-dotnet restore
-dotnet run
-```
+## Cách sửa giao diện so với phiên bản trước
 
-Mở địa chỉ HTTPS/HTTP được hiển thị trong terminal và truy cập:
+- Toàn bộ CSS của ví dụ được viết trực tiếp trong `Components/Pages/ChangeColorCar.razor` để vẫn có hiệu lực khi CSS isolation chưa được tải.
+- Ảnh hiển thị 348 × 197 px.
+- Sử dụng CSS Flexbox để đặt ảnh và 3 nút cùng hàng.
+- Các màu nút được thiết lập với CSS.
+- Nhấn nút sẽ thay đổi state `SelectedColor` và thuộc tính `src` của ảnh.
 
-```text
-/change-color-car
-```
+## Resource
 
-## Cấu trúc resource
-- `wwwroot/products/`: ảnh xe theo màu.
-- `wwwroot/icons/`: icon màu được cung cấp kèm bài (để sẵn trong project, có thể dùng làm swatch nếu muốn mở rộng).
+- `wwwroot/products/black-car.jpg`
+- `wwwroot/products/red-car.jpg`
+- `wwwroot/products/silver-car.jpg`
+- Các resource gốc khác vẫn giữ nguyên trong thư mục `wwwroot`.
 
-## Data Binding và State
-- Route: `@page "/change-color-car"`.
-- State: `SelectedColor` có kiểu `string`, lưu một trong các giá trị `red`, `silver`, `black`.
-- Binding ảnh: thuộc tính `src` của thẻ `img` nhận giá trị từ `CurrentImage`.
-- Event binding: `@onclick` gọi các hàm `SelectRed`, `SelectSilver`, `SelectBlack`.
-- Khi state thay đổi, Blazor render lại component và ảnh xe được cập nhật.
-
-Các kiểu `boolean`, `number`, `object`, `array` không cần thiết cho yêu cầu hiện tại. Có thể dùng chúng nếu mở rộng, ví dụ `bool IsLoading`, `int SelectedIndex`, một object `Car`, hoặc danh sách `List<CarColor>`.
+Lưu ý: Ảnh tĩnh truy cập từ URL bắt đầu bằng `/` thay cho `/wwwroot/`.

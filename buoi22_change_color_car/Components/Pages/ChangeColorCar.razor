@@ -1,49 +1,99 @@
 @page "/change-color-car"
-@rendermode InteractiveServer
-@using Microsoft.AspNetCore.Components
 
 <PageTitle>Change color car</PageTitle>
 
-<main class="car-demo">
+<div class="car-page">
     <h1>Change color car</h1>
 
-    <div class="content">
-        <div class="car-preview">
-            <img src="@CurrentImage" alt="@($"{SelectedColor} car")" />
-        </div>
+    <div class="car-content">
+        <img class="car-image" src="@CurrentImage" alt="Xe màu @SelectedColor" />
 
-        <div class="color-options" aria-label="Choose car color">
-            <button type="button" class="btn btn-danger @(SelectedColor == "red" ? "selected" : "")"
-                    aria-pressed="@(SelectedColor == "red")" @onclick="SelectRed">
+        <div class="car-actions">
+            <button type="button" class="car-btn red-btn" @onclick="SelectRed">
                 Red color
             </button>
-
-            <button type="button" class="btn btn-secondary @(SelectedColor == "silver" ? "selected" : "")"
-                    aria-pressed="@(SelectedColor == "silver")" @onclick="SelectSilver">
+            <button type="button" class="car-btn silver-btn" @onclick="SelectSilver">
                 Silver color
             </button>
-
-            <button type="button" class="btn btn-dark @(SelectedColor == "black" ? "selected" : "")"
-                    aria-pressed="@(SelectedColor == "black")" @onclick="SelectBlack">
+            <button type="button" class="car-btn black-btn" @onclick="SelectBlack">
                 Black color
             </button>
         </div>
     </div>
-</main>
+</div>
+
+<style>
+    /* Dat CSS ngay trong component de khong phu thuoc CSS isolation. */
+    .car-page {
+        padding: 8px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #212529;
+    }
+
+    .car-page h1 {
+        margin: 0 0 6px 0;
+        padding: 0;
+        border: none;
+        background: transparent;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 29px;
+    }
+
+    .car-content {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 26px;
+    }
+
+    .car-image {
+        display: block;
+        width: 348px;
+        height: 197px;
+        max-width: 100%;
+        object-fit: contain;
+        background: #e8e8e8;
+    }
+
+    .car-actions {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 13px;
+    }
+
+    .car-btn {
+        appearance: none;
+        border: 0;
+        border-radius: 6px;
+        padding: 8px 12px;
+        font: 14px/16px Arial, Helvetica, sans-serif;
+        color: white;
+        cursor: pointer;
+    }
+
+    .red-btn { background: #ff0000; }
+    .silver-btn { background: #808080; }
+    .black-btn { background: #000000; }
+
+    .car-btn:hover { opacity: 0.88; }
+    .car-btn:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+</style>
 
 @code {
-    // STATE: Biến trạng thái kiểu string lưu màu xe hiện tại.
-    private string SelectedColor { get; set; } = "black";
+    // State (string): mau xe dang duoc chon.
+    private string SelectedColor = "black";
 
-    // DATABINDING: Đường dẫn ảnh được xác định từ state SelectedColor.
+    // Binding thuoc tinh src theo gia tri cua state.
     private string CurrentImage => SelectedColor switch
     {
         "red" => "/products/red-car.jpg",
         "silver" => "/products/silver-car.jpg",
-        "black" => "/products/black-car.jpg",
         _ => "/products/black-car.jpg"
     };
 
+    // Event binding: nhan nut de cap nhat state.
     private void SelectRed() => SelectedColor = "red";
     private void SelectSilver() => SelectedColor = "silver";
     private void SelectBlack() => SelectedColor = "black";
