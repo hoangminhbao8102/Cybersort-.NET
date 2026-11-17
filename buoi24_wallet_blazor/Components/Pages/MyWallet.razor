@@ -1,0 +1,118 @@
+@page "/"
+@page "/wallet"
+@rendermode InteractiveServer
+@using System.Globalization
+
+<PageTitle>My Wallet - Blazor</PageTitle>
+
+<div class="wallet-screen">
+    <section class="wallet-card shadow" aria-label="My wallet">
+        <h1 class="wallet-title">My Wallet</h1>
+        <div class="wallet-balance">$@_balance.ToString("N2", CultureInfo.InvariantCulture)</div>
+        <p class="wallet-balance-caption">Total balance</p>
+
+        <div class="d-flex justify-content-center gap-2 wallet-buttons">
+            <button type="button" class="btn btn-success"
+                    @onclick="() => OpenModal(WalletTransactionType.Deposit)">
+                Deposit
+            </button>
+            <button type="button" class="btn btn-danger"
+                    @onclick="() => OpenModal(WalletTransactionType.Withdraw)">
+                Withdraw
+            </button>
+        </div>
+
+        <h2 class="wallet-section-title">Transaction History</h2>
+
+        <div class="wallet-table-wrap">
+            <table class="table table-borderless wallet-table mb-0">
+                <thead class="visually-hidden">
+                    <tr>
+                        <th scope="col">Type</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (_transactions.Count == 0)
+                    {
+                        <tr>
+                            <td colspan="3" class="text-center py-3">No transactions yet.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var transaction in _transactions)
+                        {
+                            <tr class="@(transaction.Type == WalletTransactionType.Deposit ? "transaction-deposit" : "transaction-withdraw")">
+                                <td>@(transaction.Type == WalletTransactionType.Deposit ? "Deposit" : "Withdraw")</td>
+                                <td class="text-end">$@transaction.Amount.ToString("N2", CultureInfo.InvariantCulture)</td>
+                                <td class="text-end">@FormatTime(transaction.CreatedAt)</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+@if (_activeAction.HasValue)
+{
+    <ModalWallet IsDeposit="@(_activeAction == WalletTransactionType.Deposit)"
+                 CurrentBalance="@_balance"
+                 OnConfirm="ApplyTransaction"
+                 OnClose="CloseModal" />
+}
+
+@code {
+    // STATE 1: Số dư hiện tại.
+    // Dữ liệu minh họa trong hình: 2499.73 USD.
+    private decimal _balance = 2499.73m;
+
+    // STATE 2: Lịch sử giao dịch (4 giao dịch mẫu để giống hình minh họa).
+    private readonly List<WalletTransaction> _transactions = new()
+    {
+        new(WalletTransactionType.Deposit, 500m, new DateTime(2026, 1, 19, 15, 0, 0)),
+        new(WalletTransactionType.Withdraw, 200m, new DateTime(2026, 1, 20, 10, 0, 0)),
+        new(WalletTransactionType.Withdraw, 200m, new DateTime(2026, 1, 20, 10, 0, 0)),
+        new(WalletTransactionType.Deposit, 500m, new DateTime(2026, 1, 19, 15, 0, 0))
+    };
+
+    // STATE 3: Modal đang mở (null = đóng modal).
+    private WalletTransactionType? _activeAction;
+
+    private void OpenModal(WalletTransactionType action) => _activeAction = action;
+
+    private void CloseModal() => _activeAction = null;
+
+    private Task ApplyTransaction(decimal amount)
+    {
+        if (_activeAction is null || amount <= 0 || decimal.Round(amount, 2) != amount)
+        {
+            return Task.CompletedTask;
+        }
+
+        var action = _activeAction.Value;
+        if (action == WalletTransactionType.Withdraw && amount > _balance)
+        {
+            return Task.CompletedTask;
+        }
+
+        if (action == WalletTransactionType.Deposit && amount > decimal.MaxValue - _balance)
+        {
+            return Task.CompletedTask;
+        }
+
+        _balance += action == WalletTransactionType.Deposit ? amount : -amount;
+        _transactions.Insert(0, new WalletTransaction(action, amount, DateTime.Now));
+        _activeAction = null;
+
+        return Task.CompletedTask;
+    }
+
+    private static string FormatTime(DateTime time) =>
+        time.ToString("dd MMM h:mmtt", CultureInfo.InvariantCulture)
+            .Replace("AM", "am")
+            .Replace("PM", "pm");
+}

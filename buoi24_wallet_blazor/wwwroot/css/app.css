@@ -1,0 +1,102 @@
+/* Giao diện bổ sung cho Bootstrap (kèm fallback nếu chưa có mạng). */
+:root { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.wallet-screen {
+    min-height: 100vh;
+    padding: 20px 14px 28px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #f4f5f7;
+}
+.wallet-card {
+    background: #212529;
+    color: #fff;
+    width: 100%;
+    max-width: 390px;
+    padding: 27px 16px 16px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,.16);
+}
+.wallet-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 17px;
+}
+.wallet-balance {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffeb00;
+    line-height: 1.3;
+}
+.wallet-balance-caption {
+    margin: 4px 0 22px;
+    font-size: 14px;
+}
+.wallet-buttons { display: flex; justify-content: center; gap: 8px; }
+.wallet-buttons .btn { font-weight: 600; }
+.wallet-section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 31px 0 9px;
+}
+.wallet-table-wrap { border-radius: 5px; overflow: hidden; }
+.wallet-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    line-height: 1.35;
+}
+.wallet-table td {
+    padding: 8px 12px;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(0,0,0,.10);
+}
+.wallet-table tr:last-child td { border-bottom: 0; }
+.wallet-table .transaction-deposit td {
+    background: #cce5d9 !important;
+    color: #193e2e !important;
+}
+.wallet-table .transaction-withdraw td {
+    background: #f8d7da !important;
+    color: #55242a !important;
+}
+.wallet-modal-dialog { max-width: 425px; margin-left: 14px; margin-right: 14px; }
+.wallet-modal .modal-content { box-shadow: 0 12px 32px rgba(0, 0, 0, .26); }
+.wallet-modal .modal-title { font-size: 18px; }
+.wallet-modal .modal-backdrop { background: rgba(0,0,0,.5); }
+/* Một số lớp Bootstrap cơ bản để trang vẫn dễ nhìn khi CDN tạm không truy cập được. */
+.btn { display:inline-block; border:1px solid transparent; border-radius:5px; padding:8px 12px; cursor:pointer; color:#fff; font-size:14px; line-height:1.35; }
+.btn-success { background:#198754; }
+.btn-danger { background:#dc3545; }
+.btn-primary { background:#0d6efd; }
+.btn-secondary { background:#6c757d; }
+.text-end { text-align:right; }
+.text-center { text-align:center; }
+.text-danger { color:#dc3545; }
+.text-muted { color:#6c757d; }
+.small { font-size:13px; }
+.mt-2 { margin-top:8px; }
+.mb-0 { margin-bottom:0; }
+.visually-hidden { position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:1050; }
+.wallet-modal { position:fixed; inset:0; z-index:1055; overflow-x:hidden; overflow-y:auto; display:block; }
+.wallet-modal-dialog { position:relative; margin-top:min(20vh, 160px); margin-bottom:28px; margin-left:auto; margin-right:auto; width:calc(100% - 28px); }
+.modal-content { background:#fff; border-radius:6px; color:#212529; text-align:left; }
+.modal-header, .modal-footer { padding:14px 16px; display:flex; align-items:center; }
+.modal-header { justify-content:space-between; border-bottom:1px solid #dee2e6; }
+.modal-footer { justify-content:flex-end; gap:8px; border-top:1px solid #dee2e6; }
+.modal-title { margin:0; }
+.modal-body { padding:16px; }
+.btn-close { border:0; background:none; cursor:pointer; width:24px; height:24px; position:relative; }
+.btn-close::after { content:'×'; font-size:25px; color:#555; position:absolute; left:3px; top:-5px; }
+.form-label { display:block; margin-bottom:7px; }
+.form-control { display:block; width:100%; border:1px solid #ced4da; padding:8px 10px; border-radius:5px; font:inherit; }
+.form-control:focus { outline:2px solid #9ec5fe; border-color:#86b7fe; }
+@media (max-width: 420px) {
+    .wallet-card { padding:25px 12px 14px; }
+    .wallet-table { font-size:12px; }
+    .wallet-table td { padding:8px 7px; }
+}

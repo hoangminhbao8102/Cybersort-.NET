@@ -1,0 +1,88 @@
+@using System.Globalization
+
+<div class="modal-backdrop fade show"></div>
+<div class="modal fade show d-block wallet-modal" tabindex="-1"
+     role="dialog" aria-modal="true" aria-labelledby="walletModalTitle">
+    <div class="modal-dialog modal-dialog-centered wallet-modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="walletModalTitle">
+                    @(IsDeposit ? "Deposit Money" : "Withdraw Money")
+                </h5>
+                <button type="button" class="btn-close" aria-label="Close"
+                        @onclick="CloseModal"></button>
+            </div>
+
+            <form novalidate @onsubmit="SubmitAsync" @onsubmit:preventDefault>
+                <div class="modal-body">
+                    <label class="form-label" for="walletAmount">Amount</label>
+                    <input id="walletAmount" class="form-control" type="number"
+                           inputmode="decimal" step="0.01" placeholder="0.00"
+                           @bind="_amountText" @bind:event="oninput" />
+
+                    @if (!string.IsNullOrWhiteSpace(_error))
+                    {
+                        <div class="text-danger small mt-2" role="alert">@_error</div>
+                    }
+
+                    <p class="text-muted small mt-2 mb-0">
+                        Current balance:
+                        $@CurrentBalance.ToString("N2", CultureInfo.InvariantCulture)
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">OK</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public bool IsDeposit { get; set; }
+    [Parameter] public decimal CurrentBalance { get; set; }
+    [Parameter] public EventCallback<decimal> OnConfirm { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    // State chỉ thuộc modal: dữ liệu vừa nhập và thông báo lỗi.
+    private string _amountText = string.Empty;
+    private string _error = string.Empty;
+
+    private async Task SubmitAsync()
+    {
+        _error = string.Empty;
+
+        if (!decimal.TryParse(_amountText, NumberStyles.AllowDecimalPoint |
+                                                NumberStyles.AllowLeadingSign,
+                              CultureInfo.InvariantCulture, out var amount) || amount <= 0)
+        {
+            _error = "Please enter a valid amount greater than 0.";
+            return;
+        }
+
+        if (decimal.Round(amount, 2) != amount)
+        {
+            _error = "Please enter no more than 2 decimal places.";
+            return;
+        }
+
+        if (!IsDeposit && amount > CurrentBalance)
+        {
+            _error = "Insufficient balance. Please enter a smaller amount.";
+            return;
+        }
+
+        if (IsDeposit && amount > decimal.MaxValue - CurrentBalance)
+        {
+            _error = "The deposit amount is too large.";
+            return;
+        }
+
+        await OnConfirm.InvokeAsync(amount);
+    }
+
+    private Task CloseModal() => OnClose.InvokeAsync();
+}
